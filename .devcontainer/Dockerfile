@@ -1,8 +1,6 @@
-# ベースイメージ
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/javascript-node:1-18
 
-# 必要なツールのインストール
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    && apt-get clean
+# Install latest pnpm
+RUN npm install -g pnpm
+
+COPY example-welcome-message.txt /usr/local/etc/vscode-dev-containers/first-run-notice.txt
