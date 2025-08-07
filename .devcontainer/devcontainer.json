@@ -1,14 +1,27 @@
 {
-  "name": "My Dev Container",
+  "name": "Dev Financial-BSPL-Dashboard-Demo",
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
-  "extensions": [
-    "ms-vscode.cpptools",
-    "esbenp.prettier-vscode"
-  ],
-  "postCreateCommand": "echo 'Dev Container is ready!'"
+
+  "postCreateCommand": "pnpm install && pnpm run build",
+
+  "waitFor": "postCreateCommand",
+
+  "postAttachCommand": {
+    "Astro tests": "pnpm run test"
+  },
+
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    },
+    "vscode": {
+      "extensions": ["astro-build.astro-vscode", "esbenp.prettier-vscode"]
+    }
+  }
 }
