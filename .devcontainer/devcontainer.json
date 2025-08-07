@@ -4,14 +4,6 @@
     "dockerfile": "Dockerfile"
   },
 
-  "postCreateCommand": "pnpm run build",
-
-  "waitFor": "postCreateCommand",
-
-  "postAttachCommand": {
-    "Astro tests": "pnpm run test"
-  },
-
   "customizations": {
     "codespaces": {
       "openFiles": ["README.md"]
